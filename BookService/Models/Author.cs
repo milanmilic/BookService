@@ -12,6 +12,7 @@ namespace BookService.Models
         [Required]
         public string Name { get; set; }
 
+        //navigation property
         public ICollection<Book> Books { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace BookService.Models
     
         public BookServiceContext() : base("name=BookServiceContext")
         {
+            //every change in database from application is written on the visual studio console in debug mode
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 

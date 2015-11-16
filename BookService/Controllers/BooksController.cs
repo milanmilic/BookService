@@ -20,6 +20,7 @@ namespace BookService.Controllers
         // GET: api/Books
         public IQueryable<BookDTO> GetBooks()
         {
+            //selecting BookDTO class for lazy loading with authorName in book table
             var books = from b in db.Books
                         select new BookDTO()
                         {
@@ -34,6 +35,7 @@ namespace BookService.Controllers
         [ResponseType(typeof(BookDetailDTO))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
+            //selecting BookDetailDTO class for lazy loading with authorName in book table
             var book = await db.Books.Include(b => b.Author).Select(b => new BookDetailDTO()
             {
                 Id = b.Id,
@@ -99,6 +101,7 @@ namespace BookService.Controllers
 
             db.Entry(book).Reference(x => x.Author).Load();
 
+            //selecting BookDTO class for lazy loading with authorName in book table
             var dto = new BookDTO()
             {
                 Id = book.Id,

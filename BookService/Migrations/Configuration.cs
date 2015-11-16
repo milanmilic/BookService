@@ -12,7 +12,7 @@ namespace BookService.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
-
+        //classical seeding data into database with migration
         protected override void Seed(BookService.Models.BookServiceContext context)
         {
             context.Authors.AddOrUpdate(x => x.Id,
